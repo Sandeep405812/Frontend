@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            background-color: aqua;
+        }
+        .bg-orange{
+            background-color: blue;
+        }
+        #bg-green{
+            background-color: greenyellow;
+        }
+
+        /* Attribute selector - element jiske paas 'target' attribute ho (koi bhi value) */
+        a[target]{
+            background-color: brown;
+        }
+
+        /* Attribute value selector - sirf wahi element jiska target="_blank" ho */
+        a[target="_blank"]{
+            color: yellow;
+        }
+
+        /* Attribute selector - href jo "https" se start ho (^=) */
+        a[href^="https"]{
+            text-decoration: underline;
+        }
+
+        /* Attribute selector - href jo ".com" pe end ho ($=) */
+        a[href$=".com"]{
+            font-weight: bold;
+        }
+
+        /* Attribute selector - href mein kahin bhi "pw" word ho (*=) */
+        a[href*="pw"]{
+            border: 1px solid black;
+        }
+
+        /* Group Selector - multiple selectors ek sath same style ke liye */
+        h4,h5,h6{
+            background-color: red;
+            font-size: 200 px;
+            display: inline;
+        }
+
+        /* Descendant Combinator - ul ke andar kahin bhi (direct ya nested) li */
+        ul li{
+            background-color: pink;
+        }
+
+        /* Child Combinator (>) - sirf direct child select hoga, nested wala nahi */
+        header>a{
+            background-color: blue;
+        }
+
+        /* Adjacent Sibling Combinator (+) - sirf wahi element jo immediately h4 ke baad aaye */
+        h4 + h5{
+            color: green;
+        }
+
+        /* General Sibling Combinator (~) - h4 ke baad aane wale saare h6 siblings (immediate na ho tab bhi) */
+        h4 ~ h6{
+            color: purple;
+        }
+
+        /* :first-child - parent ka pehla child element */
+        div:first-child{
+            background-color: blanchedalmond;
+        }
+
+        /* :nth-child(2n) - har even-numbered child (2,4,6...) */
+        div:nth-child(2n){
+            background-color: aqua;
+        }
+
+        /* :last-child - parent ka aakhri child element */
+        div:last-child{
+            background-color: lightgray;
+        }
+
+        /* :nth-of-type - same tag type ka nth element (siblings count nahi hote agar tag different ho) */
+        li:nth-of-type(odd){
+            color: red;
+        }
+
+        /* :only-child - agar koi element apne parent ka eklauta child ho */
+        li:only-child{
+            font-style: italic;
+        }
+
+        /* :not() - is selector ko chhod kar baaki sab pe apply hoga */
+        div:not(:first-child){
+            border: 1px dashed gray;
+        }
+
+        /* :empty - jo element bilkul khali ho (no text, no child) */
+        li:empty{
+            display: none;
+        }
+
+        /* :hover - mouse element ke upar jane par style change */
+        a:hover{
+            color: orange;
+            cursor: pointer;
+        }
+
+        /* :focus - jab element click/select hoke focus mein aaye (forms ke liye useful) */
+        a:focus{
+            outline: 2px solid blue;
+        }
+
+        /* ::before - element ke content se pehle kuch insert karna */
+        h1::before{
+            content: "★ ";
+        }
+
+        /* ::after - element ke content ke baad kuch insert karna */
+        h1::after{
+            content: " ★";
+        }
+
+        /* ::first-letter - paragraph/heading ke pehle letter ko style karna */
+        h1::first-letter{
+            font-size: 1.5em;
+            color: darkred;
+        }
+
+        /* ::selection - jab user text ko select(highlight) kare */
+        ::selection{
+            background-color: yellow;
+            color: black;
+        }
+
+        /* :root - document ke root element (html) ko target karta hai, CSS variables ke liye use hota hai */
+        :root{
+            --main-color: teal;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Lorem ipsum dolor sit amet.</h1>
+    <h2 class="bg-orange">Lorem ipsum dolor sit amet.</h2>
+    <h3 id="bg-green" class="bg-yellow">Lorem ipsum dolor sit amet.</h3>
+
+    <a href="https://pwskills.com">pw skill</a>
+    <a target="_blank" href="https://google.com">googlle</a>
+
+
+    <h4>Lorem ipsum dolor sit amet.</h4>
+    <h5>Lorem ipsum dolor sit amet consectetur.</h5>
+    <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h6>
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+   
+    <header>
+           <a href="#">google</a>
+           <nav>
+            <ul>
+                <li>Home</li>
+                <a href="">logo</a>
+            </ul>
+           </nav>
+    </header>
+
+
+
+    <div>
+        <div>one</div>
+        <div>two</div>
+        <div>three</div>
+    </div>
+</body>
+
+</html>
